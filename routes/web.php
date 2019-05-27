@@ -19,16 +19,4 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
 
-Route::get('/twiite', function () {
-    return view('index', ['twiite' => App\Twiite::all(), 'tags' => App\Tag::all()]);
-});
-
-Route::post('/twiite', function () {
-    $twiite = new App\Twiite();
-    $twiite->contents = request()->contents;
-    $twiite->save();
-//dd(request()->tags);
-    $twiite->tags()->attach(request()->tags);
-
-    return redirect('/twiite');
-});
+Route::resource('/twiite', TwiiteController::class,['except' => ['show', 'create']]);
