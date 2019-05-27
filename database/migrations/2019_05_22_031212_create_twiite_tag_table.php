@@ -11,8 +11,8 @@ class CreateTwiiteTagTable extends Migration
     {
         Schema::create('tag_twiite', function (Blueprint $table) {
             $table->increments('id');
-	    $table->integer('twiite_id');
-	    $table->integer('tag_id');
+            $table->integer('twiite_id');
+            $table->integer('tag_id');
         });
     }
 
